@@ -31,10 +31,15 @@ bot.once('spawn', () => {
 
   defaultMove.allow1by1towers = false;
   defaultMove.canDig = true;
+  defaultMove.allowParkour = true;
+  defaultMove.allowSprinting = true;
   defaultMove.scafoldingBlocks = [];
-  defaultMove.scafoldingBlocks.push(bot.registry.itemsByName['dirt'].id);
-  bot.pathfinder.setMovements(defaultMove);
 
+
+  defaultMove.scafoldingBlocks.push(bot.registry.itemsByName['dirt'].id);
+
+
+  bot.pathfinder.setMovements(defaultMove);
   mineflayerViewer(bot, { port: 3007, firstPerson: true }) // El puerto es el puerto del servidor de Minecraft. Si la primera persona es falsa, obtendrás una vista panorámica.
 })
 
@@ -53,6 +58,21 @@ bot.on('chat', (username, message) => {
 
   if(command == 'di') {
       bot.chat(args.join(' '));
+  }
+
+// Activar al bot para que venga hacia a mí con el comando '!ven'  
+  if(command == 'ven') {
+    if (username === bot.username) return
+
+    const target = bot.players[username] ? bot.players[username].entity : null
+    if (message === 'ven') {
+      if (!target) {
+        bot.chat('I don\'t see you !')
+        return
+      }
+        const p = target.position
+        bot.pathfinder.setGoal(new GoalNear(p.x, p.y, p.z, 1))
+    } 
   }
 });
 
