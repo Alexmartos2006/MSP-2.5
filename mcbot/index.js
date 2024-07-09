@@ -54,7 +54,7 @@ bot.on('chat', (username, message) => {
     if(command == 'ven') {
         const target = bot.players[username] ? bot.players[username].entity : null;
         if(!target) {
-            bot.chat('No te puedo ver, no se donde estas, prueba de entrar detro de mis chunks o acercarte mas a mi');
+            bot.chat('No te puedo ver, pero voy para hayá.');
             return;
         }
         const player = target.position;
