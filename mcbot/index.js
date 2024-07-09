@@ -1,5 +1,5 @@
 const mineflayer = require('mineflayer'); // importar el módulo de mineflayer.
-
+const prefix = '!'; // activar el comando con el prefijo '!'
 
 const bot = mineflayer.createBot({  // creación del bot.
   host: '100.87.107.68', // minecraft server ip
@@ -13,7 +13,15 @@ const bot = mineflayer.createBot({  // creación del bot.
 bot.on('chat', (username, message) => {
   if (username == bot.username) return
 
+  if(!message.startsWith(prefix)) {
+    return;
+  }
+  const args = message.slice(prefix.length).trim().split(/ +/g);
+  const command = args.shift().toLowerCase();
 
+  if(command == 'di') {
+      bot.chat(args.join(' '));
+  }
 });
 
 // Muestra los errores en la consola o motivos de explusación:
