@@ -23,8 +23,8 @@ bot.once('spawn', () => {
 
 
 
-
-bot.on('chat', (username, message) => {
+// Activar para el bot diga alguna frase con el comando '!di'
+bot.on('chat', (username, message) => { 
   if (username == bot.username) return
 
   if(!message.startsWith(prefix)) {
@@ -36,8 +36,6 @@ bot.on('chat', (username, message) => {
   if(command == 'di') {
       bot.chat(args.join(' '));
   }
-  bot.
-
 });
 
 
