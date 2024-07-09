@@ -36,7 +36,7 @@ bot.once('spawn', () => {
  
     bot.pathfinder.setMovements(defaultMove);
  
-    mineflayerViewer(bot, { port: 3007, firstPerson: true }) // port is the minecraft server port, if first person is false, you get a bird's-eye view
+    mineflayerViewer(bot, { port: 3400, firstPerson: true }) // port is the minecraft server port, if first person is false, you get a bird's-eye view
 });
  
 bot.on('chat', (username, message) => {
