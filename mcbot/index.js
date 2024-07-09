@@ -22,6 +22,8 @@ bot.on('chat', (username, message) => {
   if(command == 'di') {
       bot.chat(args.join(' '));
   }
+  
+
 });
 
 // Muestra los errores en la consola o motivos de explusación:
