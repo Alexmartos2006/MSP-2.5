@@ -1,5 +1,6 @@
 const mineflayer = require('mineflayer'); // importar el módulo de mineflayer.
 
+
 const bot = mineflayer.createBot({  // creación del bot.
   host: '100.87.107.68', // minecraft server ip
   username: '---AFK-PLAYER---', // username to join as if auth is `offline`, else a unique identifier for this account. Switch if you want to change accounts
@@ -12,7 +13,7 @@ const bot = mineflayer.createBot({  // creación del bot.
 bot.on('chat', (username, message) => {
   if (username == bot.username) return
 
-  c
+
 });
 
 // Muestra los errores en la consola o motivos de explusación:
