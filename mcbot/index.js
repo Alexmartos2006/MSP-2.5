@@ -3,6 +3,11 @@ const prefix = '!'; // activar el comando con el prefijo '!'
 const { mineflayer: mineflayerViewer } = require('prismarine-viewer') // importar el modulo mineflayerViewer
 
 
+const pathfinder = require('mineflayer-pathfinder').pathfinder
+const Movements = require('mineflayer-pathfinder').Movements
+const { GoalNear } = require('mineflayer-pathfinder').goals
+
+
 
 
 const bot = mineflayer.createBot({  // creación del bot.
@@ -17,6 +22,19 @@ const bot = mineflayer.createBot({  // creación del bot.
 
 
 bot.once('spawn', () => {
+  // Once we've spawn, it is safe to access mcData because we know the version
+  const mcData = require('minecraft-data')(bot.version);
+
+
+  // A new movement instance for specific behavior
+  const defaultMove = new Movements(bot);
+
+  defaultMove.allow1by1towers = false;
+  defaultMove.canDig = true;
+  defaultMove.scafoldingBlocks = [];
+  defaultMove.scafoldingBlocks.push(bot.registry.itemsByName['dirt'].id);
+  bot.pathfinder.setMovements(defaultMove);
+
   mineflayerViewer(bot, { port: 3007, firstPerson: true }) // El puerto es el puerto del servidor de Minecraft. Si la primera persona es falsa, obtendrás una vista panorámica.
 })
 
