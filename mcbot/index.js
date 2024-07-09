@@ -72,7 +72,7 @@ bot.on('chat', (username, message) => {
       }
         const p = target.position
         bot.pathfinder.setGoal(new GoalNear(p.x, p.y, p.z, 1))
-    } 
+       } 
   }
 });
 
